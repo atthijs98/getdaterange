@@ -1,25 +1,26 @@
-// Get today
-var startDate = new Date();
-// 30 days ago
-var date = new Date();
-date.setDate(date.getDate() - 30);
-var endDate = date.toISOString().split('T')[0];
-
-var labels = getDateRange(startDate, endDate);
 
 /*array containing all the dates*/
-console.log(labels);
+let getDateRange = function (date, range) {
+  let startDate = new Date(date.toISOString().split('T')[0])
+  let end = new Date()
+  let arr = []
+  end.setDate(date.getDate() + range)
+  let endDate = new Date(end.toISOString().split('T')[0])
+  
+  console.log(startDate)
+  console.log(endDate)
+  
+  
+  while (endDate.getTime() !== startDate.getTime()) {
+     arr.push(new Date(endDate).toISOString().split('T')[0])
+     if (endDate < startDate){
+       endDate = new Date(endDate.setDate(endDate.getDate() + 1))
+     } else {
+       endDate = new Date(endDate.setDate(endDate.getDate() - 1))
+     }
+  }
 
-  function getDateRange(start,end) {
-        var
-            arr = [],
-            dt = new Date(end);
-    
-        while (dt <= start) {
-            arr.push(new Date(dt).toISOString().split("T")[0]);
-            dt.setDate(dt.getDate() + 1);
-        }
-
-        return arr;
-    }
+     
+  return arr;
+}
  
