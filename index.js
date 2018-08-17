@@ -1,15 +1,9 @@
-
-/*array containing all the dates*/
 let getDateRange = function (date, range) {
   let startDate = new Date(date.toISOString().split('T')[0])
   let end = new Date()
   let arr = []
   end.setDate(date.getDate() + range)
   let endDate = new Date(end.toISOString().split('T')[0])
-  
-  console.log(startDate)
-  console.log(endDate)
-  
   
   while (endDate.getTime() !== startDate.getTime()) {
      arr.push(new Date(endDate).toISOString().split('T')[0])
